@@ -1,0 +1,9 @@
+.main-button {
+	margin: 200px;
+	background-color: royalblue;
+	color: #f5e5ef;
+	border-radius: 6%;
+	border: 1px #978590 solid;
+	height: 100px;
+	width: 200px;
+}
