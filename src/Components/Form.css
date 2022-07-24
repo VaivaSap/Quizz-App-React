@@ -1,0 +1,13 @@
+.form-view{
+    margin: 50px 30px;
+}
+
+
+.buttons {
+	display: flex;
+    justify-content: center;
+	margin-top: 70px;
+    width: 100%;
+    gap: 40px;
+
+}

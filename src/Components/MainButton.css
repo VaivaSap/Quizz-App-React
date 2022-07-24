@@ -1,9 +1,9 @@
 .main-button {
-	margin: 200px;
-	background-color: royalblue;
+	margin: 70px auto;
+	background-color: rgb(53, 61, 83);
 	color: #f5e5ef;
 	border-radius: 6%;
 	border: 1px #978590 solid;
-	height: 100px;
+	height: 60px;
 	width: 200px;
 }

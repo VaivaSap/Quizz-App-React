@@ -1,11 +1,9 @@
 .answer-button {
-	display: flex;
-	flex-wrap: wrap;
-	background-color: royalblue;
+	background-color: rgb(107, 136, 221);
 	color: #f5e5ef;
 	border-radius: 6%;
 	border: 1px #978590 solid;
-	height: 100px;
-	width: 200px;
+	height: 80px;
+	width: 300px;
 }
 

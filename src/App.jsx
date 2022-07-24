@@ -1,13 +1,27 @@
 import { useState } from "react";
+
+import {
+	BrowserRouter as Router,
+	Route,
+	Routes,
+	useNavigate,
+} from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import MainButton from "./Components/MainButton";
 import Form from "./Components/Form";
+import Quizz from "./Components/Quizz";
 
 function App() {
 	const buttonText = "Start the Quizz";
 	const formText = "Question";
 	const [currentScore, setCurrentScore] = useState(0);
+
+	const navigate = useNavigate();
+
+	const navigateToQuestions = () => {
+		navigate("/questions");
+	};
 
 	const questions = [
 		{
@@ -22,7 +36,7 @@ function App() {
 		},
 		{
 			id: 2,
-			questionText: "My favourite colos is...",
+			questionText: "My favourite color is...",
 			possibleAnswers: [
 				{ id: 1, answerText: "blue", isCorrect: false },
 				{ id: 2, answerText: "pink", isCorrect: false },
@@ -76,25 +90,46 @@ function App() {
 	function chooseAnswer() {
 		setGuessMade(true);
 	}
+
 	return (
 		<div className="App">
-			<MainButton text={buttonText}></MainButton>
-
 			<div className={"form-view"}>
-				<Form
-					text={formText}
-					question={currentQuestion}
-					countScore={countScore}
-					chooseAnswer={chooseAnswer}
-					guessMade={guessMade}
-				></Form>
+				<Routes>
+					<Route
+						exact
+						path="/"
+						element={
+							<MainButton
+								text={buttonText}
+								onClick={navigateToQuestions}
+							></MainButton>
+						}
+					/>
+					<Route
+						path="/questions"
+						element={
+							<>
+								<Form
+									text={formText}
+									question={currentQuestion}
+									countScore={countScore}
+									chooseAnswer={chooseAnswer}
+									guessMade={guessMade}
+								></Form>
+								<p>Your score is {currentScore} out of 4</p>
+
+								{guessMade ? (
+									<MainButton
+										text="Next question"
+										onClick={nextQuestion}
+									/>
+								) : null}
+							</>
+						}
+					></Route>
+					<Route path="/quizz" element={<Quizz />} />
+				</Routes>
 			</div>
-
-			<p>Your score is {currentScore} out of 4</p>
-
-			{guessMade ? (
-				<MainButton text="Next question" onClick={nextQuestion} />
-			) : null}
 		</div>
 	);
 }
